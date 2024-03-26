@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using FlightManager.Models;
 
 namespace FlightManager.Data
 {
@@ -9,5 +10,6 @@ namespace FlightManager.Data
             : base(options)
         {
         }
+        public DbSet<FlightManager.Models.Flight> Flight { get; set; } = default!;
     }
 }
