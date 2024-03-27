@@ -11,5 +11,6 @@ namespace FlightManager.Data
         {
         }
         public DbSet<FlightManager.Models.Flight> Flight { get; set; } = default!;
+        public DbSet<FlightManager.Models.Reservation> Reservation { get; set; } = default!;
     }
 }

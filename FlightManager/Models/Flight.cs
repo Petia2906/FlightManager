@@ -1,4 +1,6 @@
-﻿namespace FlightManager.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace FlightManager.Models
 {
     public class Flight
     {
