@@ -39,7 +39,8 @@ namespace FlightManager.Models
         [Display(Name = "Flight number/Номер на полета")]
         [Required(ErrorMessage = "Flight number required/Номерът на полета е задължителен")]
         
-        [ForeignKey("FlightID")]
+        [ForeignKey("Flight")]
+
         public int FlightID { get; set; }
 
         [Display(Name = "Tiket type/Вид билет")]
