@@ -28,7 +28,7 @@ namespace FlightManager.Models
         public string Nationality { get; set; }
 
         [Display(Name = "Phone number/Телефон")]
-        [Required(ErrorMessage = "Phone number required/Мобилният телефон е задължителен"),RegularExpression(@"^(+[0-9]{1,3}[0-9]{4,12})",ErrorMessage="Phone number is not valid!/Телефонният номер е невалиден!")]
+        [Required(ErrorMessage = "Phone number required/Мобилният телефон е задължителен"),RegularExpression(@"^([\+][0-9]{1,3}[0-9]{4,12})",ErrorMessage="Phone number is not valid!/Телефонният номер е невалиден!")]
         public string PhoneNumber { get; set; }
 
         [Display(Name = "Email/Имейл")]
@@ -39,6 +39,7 @@ namespace FlightManager.Models
         [Display(Name = "Flight number/Номер на полета")]
         [Required(ErrorMessage = "Flight number required/Номерът на полета е задължителен")]
         
+        [ForeignKey("FlightID")]
         public int FlightID { get; set; }
 
         [Display(Name = "Tiket type/Вид билет")]
