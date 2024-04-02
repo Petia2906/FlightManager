@@ -1,5 +1,9 @@
 ﻿/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
+header.nav {
+    background-color: #795458;
+    scrollbar-shadow-color: #453F78;
+}
 
 a.navbar-brand {
   white-space: normal;
@@ -9,6 +13,12 @@ a.navbar-brand {
 
 a {
   color: #0077cc;
+}
+
+.display-4 {
+    color: #453F78;
+    font-style:italic;
+    font-family:fantasy;
 }
 
 .btn-primary {
