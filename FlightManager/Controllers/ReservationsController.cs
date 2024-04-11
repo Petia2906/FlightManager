@@ -22,7 +22,8 @@ namespace FlightManager.Controllers
         // GET: Reservations
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Reservation.ToListAsync());
+            var applicationDbContext = _context.Reservation.Include(r => r.Flight);
+            return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: Reservations/Details/5
@@ -34,6 +35,7 @@ namespace FlightManager.Controllers
             }
 
             var reservation = await _context.Reservation
+                .Include(r => r.Flight)
                 .FirstOrDefaultAsync(m => m.ReservationID == id);
             if (reservation == null)
             {
@@ -46,6 +48,7 @@ namespace FlightManager.Controllers
         // GET: Reservations/Create
         public IActionResult Create()
         {
+            ViewData["FlightID"] = new SelectList(_context.Flight, "FlightID", "FlightFrom");
             return View();
         }
 
@@ -62,6 +65,7 @@ namespace FlightManager.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["FlightID"] = new SelectList(_context.Flight, "FlightID", "FlightFrom", reservation.FlightID);
             return View(reservation);
         }
 
@@ -78,6 +82,7 @@ namespace FlightManager.Controllers
             {
                 return NotFound();
             }
+            ViewData["FlightID"] = new SelectList(_context.Flight, "FlightID", "FlightFrom", reservation.FlightID);
             return View(reservation);
         }
 
@@ -113,6 +118,7 @@ namespace FlightManager.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["FlightID"] = new SelectList(_context.Flight, "FlightID", "FlightFrom", reservation.FlightID);
             return View(reservation);
         }
 
@@ -125,6 +131,7 @@ namespace FlightManager.Controllers
             }
 
             var reservation = await _context.Reservation
+                .Include(r => r.Flight)
                 .FirstOrDefaultAsync(m => m.ReservationID == id);
             if (reservation == null)
             {

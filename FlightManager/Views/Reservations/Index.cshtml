@@ -34,7 +34,7 @@
                 @Html.DisplayNameFor(model => model.Email)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FlightID)
+                @Html.DisplayNameFor(model => model.Flight)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.TicketType)
@@ -67,7 +67,7 @@
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FlightID)
+                @Html.DisplayFor(modelItem => item.Flight.FlightFrom)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TicketType)
