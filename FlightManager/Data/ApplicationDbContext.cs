@@ -12,5 +12,11 @@ namespace FlightManager.Data
         }
         public DbSet<FlightManager.Models.Flight> Flight { get; set; } = default!;
         public DbSet<FlightManager.Models.Reservation> Reservation { get; set; } = default!;
+        //public DbSet<User> User { get; set; }
+        //protected override void OnModelCreating(ModelBuilder builder)
+        //{
+        //    base.OnModelCreating(builder);
+          
+        //}
     }
 }
