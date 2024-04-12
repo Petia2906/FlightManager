@@ -88,6 +88,12 @@ namespace FlightManager.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("FlightID,FlightFrom,FlightTo,TakeOffTime,LandingTime,PlaneType,PlaneNumber,PilotName,PlaneCapacity,PlaneBusinessClassCapacity")] Flight flight)
         {
+            if (flight.TakeOffTime >= flight.LandingTime) 
+            {
+                ModelState.AddModelError(nameof(flight.TakeOffTime),"Take Off time can't be after or the same as landing time.");
+                ModelState.AddModelError(nameof(flight.LandingTime), "Landing time can't be before or the same as take Off time.");
+            }
+            
             if (ModelState.IsValid)
             {
                 _context.Add(flight);

@@ -72,6 +72,15 @@ namespace FlightManager.Controllers
         /// <returns>The view for creating a new reservation</returns>
         public IActionResult Create()
         {
+            List<SelectListItem> ticketTypes = new List<SelectListItem>() 
+            {
+            new SelectListItem {
+            Text = "обикновен билет", Value = "1"
+            },
+            new SelectListItem {
+            Text = "бизнес класа", Value = "2"
+            }};
+            ViewData["TicketType"]=ticketTypes;
             ViewData["FlightID"] = new SelectList(_context.Flight, "FlightID", "FlightFrom");
             return View();
         }
@@ -91,8 +100,9 @@ namespace FlightManager.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ReservationID,FirstName,SecondName,LastName,EGN,Nationality,PhoneNumber,Email,FlightID,TicketType")] Reservation reservation)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid )
             {
+                
                 _context.Add(reservation);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
