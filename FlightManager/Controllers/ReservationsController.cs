@@ -163,7 +163,12 @@ namespace FlightManager.Controllers
             Text = "бизнес класа", Value = "2"
             }};
             ViewData["TicketType"] = ticketTypes;
-            ViewData["FlightID"] = new SelectList(_context.Flight, "FlightID", "FlightFrom", reservation.FlightID);
+            var flightsFromTo = _context.Flight.Select(x => new
+            {
+                x.FlightID,
+                FlightFromTo = x.FlightFrom + "-" + x.FlightTo
+            });
+            ViewData["FlightID"] = new SelectList(flightsFromTo, "FlightID", "FlightFromTo", reservation.FlightID);
             return View(reservation);
         }
 
@@ -218,7 +223,12 @@ namespace FlightManager.Controllers
             Text = "бизнес класа", Value = "2"
             }};
             ViewData["TicketType"] = ticketTypes;
-            ViewData["FlightID"] = new SelectList(_context.Flight, "FlightID", "FlightFrom", reservation.FlightID);
+            var flightsFromTo = _context.Flight.Select(x => new
+            {
+                x.FlightID,
+                FlightFromTo = x.FlightFrom + "-" + x.FlightTo
+            });
+            ViewData["FlightID"] = new SelectList(flightsFromTo, "FlightID", "FlightFromTo", reservation.FlightID);
             return View(reservation);
         }
 

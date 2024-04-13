@@ -28,7 +28,17 @@ a {
 #btnBook {
     background-color: #FFC94A;
     border-color: darkgoldenrod;
-    float:right;
+    float: right;
+    font-size: 23px;
+    padding: 4px;
+    margin-right: 10%;
+    text-decoration: none;
+    text-underline-offset: 0px;
+    text-decoration-line: none;
+}
+#btnBook a {
+    color:black;
+    
 }
 
 html {
@@ -46,4 +56,17 @@ body {
     background-position:center;
     background-repeat:no-repeat;
     background-size:cover;
+    text-emphasis-color:darkorange;
+    
+}
+
+
+label {
+    color: #FFC94A;
+}
+#details {
+    background-color: #795458f1;
+}
+.table {
+    background-color: #795458f1;
 }

@@ -52,7 +52,7 @@ namespace FlightManager.Models
         /// </summary>
         [Display(Name = "Phone number/Телефон")]
         [Required(ErrorMessage = "Phone number required/Мобилният телефон е задължителен")]
-        [Phone]
+        [Phone(ErrorMessage = "Phone number is not correct/Мобилният телефон е некоректен")]
         public string PhoneNumber { get; set; }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace FlightManager.Models
         /// </summary>
         [Display(Name = "Email/Имейл")]
         [Required(ErrorMessage = "Email required/Имейлът е задължителен")]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Email is not correct/Имейлът е некоректен")]
         public string Email { get; set; }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace FlightManager.Models
         /// <summary>
         /// Public property for the flight the reservation is for
         /// </summary>
-        public Flight Flight { get; set; } = null!;
+        public Flight Flight { get; set; }/* = null!;*/
 
         /// <summary>
         /// Public property for the type of ticket the passenger has reserved

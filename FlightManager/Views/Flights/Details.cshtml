@@ -9,7 +9,7 @@
 <div>
     <h4>Flight</h4>
     <hr />
-    <dl class="row">
+    <dl class="row" id="details">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.FlightFrom)
         </dt>
@@ -65,11 +65,10 @@
             @Html.DisplayFor(model => model.PlaneBusinessClassCapacity)
         </dd>
     </dl>
-</div>
-<div>
-    <p>All reservations for this flight</p>
+     <p>All reservations for this flight</p>
     @Html.DisplayFor(model => model.Reservations)
 </div>
+
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.FlightID">Edit</a> |
     <a asp-action="Index">Back to List</a>
