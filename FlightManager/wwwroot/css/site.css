@@ -12,11 +12,28 @@ html {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
+.btn-primary {
+    background-color: #FFC94A;
+    border-color:darkgoldenrod;
+}
 
+a {
+    color: #FFC94A;
+}
+
+.text-danger {
+    color: darkorange;
+}
+
+#btnBook {
+    background-color: #FFC94A;
+    border-color: darkgoldenrod;
+    float:right;
+}
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 header {

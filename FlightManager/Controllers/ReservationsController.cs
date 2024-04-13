@@ -70,6 +70,8 @@ namespace FlightManager.Controllers
         /// Displays form creating a new reservation
         /// </summary>
         /// <returns>The view for creating a new reservation</returns>
+        /// 
+         
         public IActionResult Create()
         {
             List<SelectListItem> ticketTypes = new List<SelectListItem>() 
@@ -81,7 +83,12 @@ namespace FlightManager.Controllers
             Text = "бизнес класа", Value = "2"
             }};
             ViewData["TicketType"]=ticketTypes;
-            ViewData["FlightID"] = new SelectList(_context.Flight, "FlightID", "FlightFrom");
+            var flightsFromTo = _context.Flight.Select(x => new
+            {
+                x.FlightID,
+                FlightFromTo = x.FlightFrom + "-" + x.FlightTo
+            });
+            ViewData["FlightID"] = new SelectList(flightsFromTo, "FlightID", "FlightFromTo");
             return View();
         }
 
@@ -107,7 +114,21 @@ namespace FlightManager.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FlightID"] = new SelectList(_context.Flight, "FlightID", "FlightFrom", reservation.FlightID);
+            List<SelectListItem> ticketTypes = new List<SelectListItem>()
+            {
+            new SelectListItem {
+            Text = "обикновен билет", Value = "1"
+            },
+            new SelectListItem {
+            Text = "бизнес класа", Value = "2"
+            }};
+            ViewData["TicketType"] = ticketTypes;
+            var flightsFromTo = _context.Flight.Select(x => new
+            {
+                x.FlightID,
+                FlightFromTo = x.FlightFrom + "-" + x.FlightTo
+            });
+            ViewData["FlightID"] = new SelectList(flightsFromTo, "FlightID", "FlightFromTo", reservation.FlightID);
             return View(reservation);
         }
 
@@ -133,6 +154,15 @@ namespace FlightManager.Controllers
             {
                 return NotFound();
             }
+            List<SelectListItem> ticketTypes = new List<SelectListItem>()
+            {
+            new SelectListItem {
+            Text = "обикновен билет", Value = "1"
+            },
+            new SelectListItem {
+            Text = "бизнес класа", Value = "2"
+            }};
+            ViewData["TicketType"] = ticketTypes;
             ViewData["FlightID"] = new SelectList(_context.Flight, "FlightID", "FlightFrom", reservation.FlightID);
             return View(reservation);
         }
@@ -179,6 +209,15 @@ namespace FlightManager.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            List<SelectListItem> ticketTypes = new List<SelectListItem>()
+            {
+            new SelectListItem {
+            Text = "обикновен билет", Value = "1"
+            },
+            new SelectListItem {
+            Text = "бизнес класа", Value = "2"
+            }};
+            ViewData["TicketType"] = ticketTypes;
             ViewData["FlightID"] = new SelectList(_context.Flight, "FlightID", "FlightFrom", reservation.FlightID);
             return View(reservation);
         }

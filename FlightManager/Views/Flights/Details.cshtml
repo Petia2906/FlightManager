@@ -67,6 +67,10 @@
     </dl>
 </div>
 <div>
+    <p>All reservations for this flight</p>
+    @Html.DisplayFor(model => model.Reservations)
+</div>
+<div>
     <a asp-action="Edit" asp-route-id="@Model?.FlightID">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
