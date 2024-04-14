@@ -105,9 +105,10 @@ namespace FlightManager.Controllers
         /// </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
+        
         public async Task<IActionResult> Create([Bind("ReservationID,FirstName,SecondName,LastName,EGN,Nationality,PhoneNumber,Email,FlightID,TicketType")] Reservation reservation)
         {
-            if (ModelState.IsValid )
+            if (!ModelState.IsValid )
             {
                 
                 _context.Add(reservation);

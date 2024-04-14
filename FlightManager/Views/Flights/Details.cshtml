@@ -29,10 +29,12 @@
             @Html.DisplayFor(model => model.TakeOffTime)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LandingTime)
+            @Html.DisplayNameFor(model => model.LandingTime) 
+            
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.LandingTime)
+            
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.PlaneType)
@@ -64,9 +66,18 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.PlaneBusinessClassCapacity)
         </dd>
+        <dt class="col-sm-2">
+            All reservations for this flight
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Reservations)
+            @foreach(var item in Model.Reservations){
+                @item.FirstName  @item.SecondName 
+            }
+            
+        </dd>
     </dl>
-     <p>All reservations for this flight</p>
-    @Html.DisplayFor(model => model.Reservations)
+     
 </div>
 
 <div>

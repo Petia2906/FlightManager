@@ -27,11 +27,11 @@ namespace FlightManager.Data
         /// Gets or sets the DbSet for managing reservation entitites in the database.
         /// </summary>
         public DbSet<FlightManager.Models.Reservation> Reservation { get; set; } = default!;
-        //public DbSet<User> User { get; set; }
-        //protected override void OnModelCreating(ModelBuilder builder)
-        //{
-        //    base.OnModelCreating(builder);
-          
-        //}
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+        }
     }
 }

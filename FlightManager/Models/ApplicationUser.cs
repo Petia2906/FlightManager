@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FlightManager.Models
 {
-    public class User:IdentityUser
+    public class ApplicationUser:IdentityUser
     {
         [Required]
         [EmailAddress]
